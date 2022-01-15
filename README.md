@@ -19,6 +19,7 @@ It cannot
 I am also working on
 - jumping in and out of indentions
 # How to use
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gas35_1G3Fg/0.jpg)](https://www.youtube.com/watch?v=gas35_1G3Fg)
 
 # Example 1
 Debug the whole code
