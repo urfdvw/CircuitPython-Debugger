@@ -1,11 +1,10 @@
 # A Sort of Working CircuirPython Debugger
 CircuitPython does not support Python's `pdb` debugger,
 so I came up with this library for line-by-line debugging.
-It is a very coarse implementation 
-that modifies the original code and inserts `input()` and `exec()` in between.
+It is a very coarse implementation.
 You might find it helpful but far from powerful.
 
-It is currently can
+It currently can
 - Run code on `code.py` file line-by-line
 - Run debugging commands in the middle
 - Check global variables
