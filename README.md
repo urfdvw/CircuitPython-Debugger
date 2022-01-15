@@ -9,7 +9,7 @@ It currently can
 - Run debugging commands in the middle
 - Check global variables
 - Skip comments and white lines in the source code
-- Single breakpoints
+- Stand-alone breakpoints
 
 It cannot
 - Show function local variables
