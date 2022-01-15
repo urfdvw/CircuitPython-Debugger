@@ -1,22 +1,10 @@
 """
-This library is for debugging a single file, code.py
-
-currently able to
-- debug line by line with indentions
-
-todo
-- breakpoints
-- jump in and out of indentions
-- function local variables
-- white lines in the source code
-
+CircuitPython Debugger
+Author: urfdvw@github 
+Contact: urfdvw@gmail.com
+Published under GPL3.0
 """
-
-#%% function to printout variables and value
-def vars():
-    for v in dir():
-        if not ( v.startswith('_dbg_') or v == 'vars'):
-            print(v + ':\t' + str(locals()[v]))
+from debugfun import *
 
 #%% read 'code.py' as text
 _dbg_code = []
@@ -31,9 +19,8 @@ while True:
 _dbg_file.close()
 
 #%% read debug code snip
-_dbg_file = open('./lib/debug_line.py', 'r')
-_dbg_debugline = _dbg_file.read()
-_dbg_file.close()
+_dbg_debugline = r"print('v' * 30 + '\n' + str(_dbg_i + 2) + '\t' + _dbg_code[_dbg_i] + ('' if _dbg_code[_dbg_i].endswith('\n') else '\n') + '^' * 30)"
+_dbg_debugline += '\nbreakpoint()'
 
 #%% combine original code and debug code
 _dbg_code_out = ''
@@ -42,9 +29,12 @@ def _dbg_indent_lines(lines, n):
     return '\n'.join([' ' * n + l for l in lines.split('\n')])
 
 for _dbg_i, _dbg_line in enumerate(_dbg_code):
-    _dbg_indent = len(_dbg_line) - len(_dbg_line.lstrip())
-    _dbg_code_out += _dbg_indent_lines('_dbg_i = ' + str(_dbg_i) + '\n' + _dbg_debugline, _dbg_indent) + '\n'
-    _dbg_code_out += _dbg_line + '\n'
+    if _dbg_line.strip().startswith('#') or _dbg_line.strip().startswith('"""') or _dbg_line.strip().startswith("'''"):
+        continue
+    if _dbg_line.strip():
+        _dbg_indent = len(_dbg_line) - len(_dbg_line.lstrip())
+        _dbg_code_out += _dbg_indent_lines('_dbg_i = ' + str(_dbg_i) + '\n' + _dbg_debugline, _dbg_indent) + '\n'
+        _dbg_code_out += _dbg_line + '\n'
 
 #%% start debugging
 print('\n' * 3)
