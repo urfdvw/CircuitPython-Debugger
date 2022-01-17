@@ -1,4 +1,4 @@
-# A Sort of Working CircuirPython Debugger
+# A Sort of Working CircuitPython Debugger
 CircuitPython does not support Python's `pdb` debugger,
 so I came up with this library for line-by-line debugging.
 It is a very coarse implementation.
