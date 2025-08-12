@@ -1,3 +1,8 @@
+This repo is deprecated.
+This solution is not suggested.
+Please try at your own risk.
+
+---
 # A Sort of Working CircuitPython Debugger
 CircuitPython does not support Python's `pdb` debugger,
 so I came up with this library for line-by-line debugging.
